@@ -26,7 +26,7 @@ public abstract class SubMenu extends JFrame implements ActionListener {
     public void setComponentBounds() {
         lijst.setBounds(20, 75, 250, 30);
         toevoegen.setBounds(330, 75, 250, 30);
-        terug.setBounds(499,139,100,30);
+        terug.setBounds(499, 139, 100, 30);
     }
 
     public void addComponents() {
@@ -53,11 +53,11 @@ public abstract class SubMenu extends JFrame implements ActionListener {
         return this.toevoegen;
     }
 
-    public void setTextLijst(String text){
+    public void setTextLijst(String text) {
         lijst.setText(text);
     }
 
-    public void setTextToevoegen(String text){
+    public void setTextToevoegen(String text) {
         toevoegen.setText(text);
     }
 
@@ -65,34 +65,28 @@ public abstract class SubMenu extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == lijst) {
             Lijst lijstframe = new Lijst();
-            if(lijst.getText().equals("Spelerlijst")){
+            if (lijst.getText().equals("Spelerlijst")) {
                 lijstframe.setSoortLijst(1);
-            }
-            else if(lijst.getText().equals("Toernooienlijst")){
+            } else if (lijst.getText().equals("Toernooienlijst")) {
                 lijstframe.setSoortLijst(2);
-            }
-            else if(lijst.getText().equals("Masterclasses lijst")){
+            } else if (lijst.getText().equals("Masterclasses lijst")) {
                 lijstframe.setSoortLijst(3);
             }
             dispose();
-        }
-        else if(e.getSource() == toevoegen){
-            Toevoegen toevoegenframe = new Toevoegen();
-            if(toevoegen.getText().equals("Speler wijzigen")){
-                toevoegenframe.setSoort(1);
-            }
-            else if(toevoegen.getText().equals("Toernooi wijzigen")){
-                toevoegenframe.setSoort(2);
-            }
-            else if(toevoegen.getText().equals("Masterclass wijzigen")){
-                toevoegenframe.setSoort(3);
-            }
-            dispose();
-        }
-        else if(e.getSource() == terug){
+        } else if (e.getSource() == toevoegen && toevoegen.getText().equals("Speler wijzigen")) {
+            Toevoegen toevoegenframe = new Toevoegen(1);
+        } else if (e.getSource() == toevoegen && toevoegen.getText().equals("Toernooi wijzigen")) {
+            Toevoegen toevoegentoernooi = new Toevoegen(2);
+        } else if (e.getSource() == toevoegen && toevoegen.getText().equals("Masterclass wijzigen")) {
+            Toevoegen toevoegenMasterclass = new Toevoegen(3);
+        } else if (e.getSource() == terug) {
             dispose();
             HoofdMenu menu = new HoofdMenu();
         }
-
+        dispose();
+       
     }
 }
+
+
+
